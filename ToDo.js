@@ -4,29 +4,51 @@ const statusList = {
     "Wait": "Wait",
 };
 
-function checkForAvailability () {
-    for (const key in list) {
-        return key in list;
+const list = {
+    "create a new practice task": "In Progress", 
+	"make a bed": "Done",
+	"write a post": "To Do",
+};
+
+function checkForAvailability (task) {
+    return task in list;
+};
+
+function showMessage () {
+    console.log("Введите правильное имя дела.");
+    showList();
+};
+
+function changeStatus (task) {
+    if (checkForAvailability(task)) {
+        list[task] = statusList["In Progress"];
+    } else {
+        showMessage();
+    };
+};    
+
+function addTask (task) {
+    if (checkForAvailability(task)) {
+        list[task] = statusList["Wait"];
+    } else {
+        showMessage();
     };
 };
 
-const list = { };
-
-function changeStatus (task) {
-    if (checkForAvailability()) {
-        list[task] = statusList["In Progress"];
-    } else {
-
-    };
-
-function addTask (task) {
-    list[task] = statusList["Wait"];
-    };
-
 function compliteTask (task) {
-    list[task] = statusList["Done"];
+    if (checkForAvailability(task)) {
+        list[task] = statusList["Done"];
+    } else {
+        showMessage();
     };
+};
 
-function showList ( ) {
-
+function showList () {
+    for (const key in list) {
+        console.log(key)
     };
+};
+
+// console.log(checkForAvailability("make a bed1"));
+
+changeStatus("make a bed1");
