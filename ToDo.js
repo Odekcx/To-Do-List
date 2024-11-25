@@ -28,11 +28,7 @@ function changeStatus (task) {
 };    
 
 function addTask (task) {
-    if (checkForAvailability(task)) {
         list[task] = statusList["Wait"];
-    } else {
-        showMessage();
-    };
 };
 
 function compliteTask (task) {
@@ -50,5 +46,5 @@ function showList () {
 };
 
 // console.log(checkForAvailability("make a bed1"));
-
+addTask("--------");
 changeStatus("make a bed1");
